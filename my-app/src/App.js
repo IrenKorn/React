@@ -1,29 +1,45 @@
 import React from "react";
 import logo from './logo.svg';
 import './App.css';
+import Clock from "./Clock";
 
 
 
 export default class App extends React.Component {
-	 constructor(props) {
- super(props); // Обязательно
- this.player = props.player ? props.player : "red";
- }
-  render (){
-	let currentTime = new Date().toLocaleTimeString();
-  return (
-    <div className="App" style={{
+	constructor(props) {
+        super(props); // Обязательно
 
-		margin: '30px auto',
-		border:'4px solid black',
-		width: '100px',
-		height: '100px',
-	    }}>
-		<p>{this.player}</p>
-		<p>{currentTime}</p>
-	</div>
-  );
-}
+		this.state = {
+		    player: props.player ? props.player : "1"
+		};
+        //this.updateTime = this.updateTime.bind(this);
+		//this.change = this.change.bind(this);
+        //this.getPlayer = this.getPlayer.bind(this);
+
+    }
+	getPlayer() {
+		return (this.state.player);
+	}
+	
+	chahge() {
+		if(this.state.player == '1'){
+			this.setState({player: '2'});
+			
+		}
+	}
+		
+	componentDidMount() {
+		//setInterval(this.updateTime, 1000);
+	}
+		
+	
+    render (){
+		return (
+		<div><Clock player='1' />
+		
+		</div>
+	  );
+	}
 }
 
 
